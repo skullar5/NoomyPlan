@@ -4,7 +4,8 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QWidget>
-
+#include "loginpage.h"
+#include "authenticatesystem.h"
 
 class MainWindow : public QMainWindow {
 public:
@@ -55,7 +56,11 @@ public:
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-    MainWindow window;
-    window.show();
+    AuthenticateSystem authSystem;
+    MainWindow mainWindow;  
+
+    LoginPage loginPage(&authSystem, &mainWindow);
+    loginPage.show();  
+
     return app.exec();
 }
